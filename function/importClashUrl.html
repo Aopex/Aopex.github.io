@@ -64,6 +64,7 @@
         const particlesArray = [];
         const numberOfParticles = 100;
         const speedReduction = 0.3; // Adjust this value to slow down the particles
+        const buffer = 100; // Buffer space beyond screen edges
         
         class Particle {
             constructor() {
@@ -77,10 +78,10 @@
             update() {
                 this.x += this.speedX;
                 this.y += this.speedY;
-                if (this.x > canvas.width + this.size) this.x = -this.size;
-                if (this.x < -this.size) this.x = canvas.width + this.size;
-                if (this.y > canvas.height + this.size) this.y = -this.size;
-                if (this.y < -this.size) this.y = canvas.height + this.size;
+                if (this.x > canvas.width + buffer) this.x = -buffer;
+                if (this.x < -buffer) this.x = canvas.width + buffer;
+                if (this.y > canvas.height + buffer) this.y = -buffer;
+                if (this.y < -buffer) this.y = canvas.height + buffer;
             }
             draw() {
                 ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
